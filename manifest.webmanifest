@@ -1,0 +1,12 @@
+{
+  "name": "내신 성적 비교 및 분석",
+  "short_name": "GradeConvert",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ],
+  "lang": "ko"
+}

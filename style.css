@@ -1,0 +1,877 @@
+/* 디지털 테마 폰트 */
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Share+Tech+Mono&display=swap'); */
+
+/* 둥근/진한 한글+라틴 폰트 임포트 */
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@700;800&display=swap');
+
+/* 전역 색상 변수 - 라이트 테마 */
+:root {
+	--bg: #f7fafc;
+	--panel: #ffffff;
+	--panel-soft: #ffffff;
+	--border: #e5e7eb;
+	--text: #1f2937;
+	--muted: #6b7280;
+	--primary: #2563eb;
+	--primary-2: #0ea5e9;
+	--accent: #7c3aed;
+	--warn: #f59e0b;
+	--success: #16a34a;
+	--shadow: 0 8px 24px rgba(0,0,0,0.06);
+	/* 접근성 컬러 추가 */
+	--error: #ef4444;
+	--focus: #2563eb;
+
+	/* 둥근 디자인 전역 오버라이드 */
+	--radius-sm: 10px;
+	--radius-md: 12px;
+	--radius-lg: 18px;
+	--radius-xl: 24px;
+	--radius-pill: 9999px;
+
+	/* 살짝 더 부드러운 그림자 */
+	--shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* 전역 폰트: 시스템 기본 사용 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    backdrop-filter: none;
+    max-width: 980px;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 14px;
+    padding: 38px;
+    position: relative;
+}
+.container::before {
+	content: "";
+	position: absolute;
+	top: 0; left: 0; right: 0;
+	height: 4px;
+	background: linear-gradient(90deg, var(--primary) 0%, var(--primary-2) 100%);
+	border-radius: 14px 14px 0 0;
+}
+
+/* 헤딩 색상 라이트 톤 */
+h1, h2, h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0;
+}
+h1 {
+    color: #0f172a;
+    margin-bottom: 12px;
+    font-size: 2.1em;
+    text-shadow: none;
+}
+h2 {
+    color: #1f2937;
+    margin-top: 28px;
+    margin-bottom: 18px;
+    font-size: 1.6em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+h3 {
+    color: #334155;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    font-size: 1.2em;
+}
+
+.description, .note {
+    color: var(--muted);
+    margin-bottom: 22px;
+    font-size: 1.03em;
+}
+
+.note {
+    font-size: 0.95em;
+    color: #888;
+}
+
+/* 입력 그룹 */
+.input-section { margin-bottom: 28px; text-align: left; }
+
+.input-group { display: flex; flex-direction: column; margin-bottom: 14px; }
+
+.input-group label {
+    color: #374151;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.98em;
+    white-space: nowrap;
+}
+
+/* 입력/셀렉트 - 라이트 스타일 */
+.input-group input[type="number"],
+.input-group input[type="text"],
+.input-group select {
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    color: var(--text);
+    box-shadow: none;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    transition: border-color .2s ease, box-shadow .2s ease, transform .06s ease;
+    font-size: 1.02em;
+    box-sizing: border-box;
+}
+.input-group input::placeholder { color: #9ca3af; }
+.input-group select {
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    background-image: none;
+}
+.input-group input[type="number"]:focus,
+.input-group input[type="text"]:focus,
+.input-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    transform: none;
+}
+
+/* 점수 입력만 파란색 강조 */
+.score-input {
+    background-color: #eaf2ff;           /* 연한 파란 배경 */
+    border-color: #93c5fd;               /* 파란 테두리 */
+    color: #0f172a;
+}
+.score-input::placeholder { color: #60a5fa; }
+.score-input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.20);
+}
+
+/* 과목 입력 행: 여백만 소폭 조정(더 직관적) */
+.grade-inputs .input-group {
+	display: grid;
+	grid-template-columns: 90px 1fr 100px 1fr; /* 라벨-입력 x2 */
+	column-gap: 12px;
+	row-gap: 8px;
+	align-items: center;
+	margin-bottom: 14px;
+	padding: 10px;
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	background-color: #ffffff;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.02) inset;
+}
+.grade-inputs .input-group label {
+	text-align: right;
+	color: #374151;
+	font-weight: 600;
+	margin: 0;
+}
+
+/* 섹션 카드 라이트 */
+.semester-section {
+	background-color: #ffffff;
+	border: 1px solid var(--border);
+	padding: 22px;
+	border-radius: 12px;
+	margin-bottom: 28px;
+	position: relative;
+}
+.semester-section::before {
+	content: "";
+	position: absolute;
+	left: -1px; top: 12px; bottom: 12px;
+	width: 4px;
+	background: linear-gradient(180deg, #bfdbfe, #60a5fa);
+	border-radius: 4px;
+}
+
+/* 준비중 섹션 */
+.semester-section.coming-soon {
+	background-color: #f8fafc;
+	color: #64748b;
+	text-align: center;
+	padding: 38px;
+	border-style: dashed;
+}
+.semester-section.coming-soon h2 {
+	color: #64748b;
+	border-bottom: none;
+}
+
+/* 버튼 - 라이트 톤 블루 */
+button {
+	background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+	color: #ffffff;
+	box-shadow: 0 8px 18px rgba(37,99,235,0.25);
+	border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-size: 1.05em;
+    font-weight: 800;
+    margin-top: 14px;
+    transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+    letter-spacing: .3px;
+    font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transform: translateZ(0);
+}
+button:hover {
+	filter: brightness(1.03);
+	transform: translateY(-1px);
+}
+button:active { transform: translateY(0); }
+
+/* 보조 버튼(초기화) */
+.btn-secondary {
+    background: #ffffff;
+    color: #1f2937;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    padding: 12px 20px;
+    font-weight: 700;
+    margin-left: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* 작은 버튼 사이즈 */
+.btn-secondary.small { padding: 8px 12px; font-size: 0.9em; min-height: 36px; }
+
+/* 레이아웃: 입력(좌) · 결과(우) */
+.layout-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+	gap: 20px;
+	align-items: start;
+}
+.left-pane > .semester-section,
+.left-pane > .input-section { margin-bottom: 20px; }
+
+.right-pane { position: relative; }
+@media (min-width: 1024px) {
+	.right-pane { position: sticky; top: 16px; }
+}
+
+/* 요약 배지 스타일 강화 */
+.subject > summary {
+	background: linear-gradient(180deg, #ffffff, #f8fafc);
+	border-bottom: 1px solid var(--border);
+}
+.subject .summary-text {
+	background: #eef2ff;
+	color: #1e3a8a;
+	border: 1px solid #c7d2fe;
+	padding: 4px 8px;
+	border-radius: var(--radius-pill);
+	font-size: 0.86em;
+}
+
+/* 데스크톱에서 결과 카드/차트 가로폭 최적화 */
+.right-pane .chart-container,
+.right-pane .grade-result-item,
+.right-pane .summary-box,
+.right-pane .ai-advice-box,
+.right-pane .percentage-estimate {
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* 모바일 하단 고정 액션바 */
+.mobile-actions {
+	position: fixed;
+	left: 0; right: 0; bottom: 0;
+	padding: 10px env(safe-area-inset-right) calc(10px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
+	display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+	background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0.9));
+	backdrop-filter: blur(10px);
+	border-top: 1px solid var(--border);
+	box-shadow: 0 -6px 24px rgba(0,0,0,0.08);
+	z-index: 100;
+}
+@media (min-width: 1024px) {
+	.mobile-actions { display: none; }
+}
+
+/* 모바일에서 하단 패딩 여유 */
+@media (max-width: 1023px) {
+	body { padding-bottom: 86px; }
+}
+
+/* 아코디언 내부 입력 여백/그리드 보완 */
+.subject .grade-inputs { margin-top: 8px; }
+.subject .input-group { grid-template-columns: 96px 1fr 96px 1fr; }
+
+/* 모션 민감 사용자: 애니메이션/트랜지션 최소화 */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* 반응형 보완 */
+@media (max-width: 768px) {
+    .container { padding: 24px; }
+    h1 { font-size: 1.7em; }
+    h2 { font-size: 1.35em; }
+
+    /* 모바일에서도 Grid 유지: 2열(라벨-입력) */
+    .grade-inputs .input-group { grid-template-columns: 90px 1fr; }
+    .chart-container { width: 95%; }
+	.actions { gap: 10px; }
+	.chart-controls { grid-template-columns: 1fr; justify-items: stretch; }
+}
+
+.subject-list { display: grid; gap: 10px; }
+.subject { border: 1px solid var(--border); border-radius: 10px; background: #ffffff; overflow: hidden; }
+.subject > summary {
+	list-style: none;
+	display: flex; justify-content: space-between; align-items: center;
+	gap: 10px;
+	padding: 12px 14px;
+	cursor: pointer;
+	font-weight: 700;
+	color: #0f172a;
+}
+.subject > summary::-webkit-details-marker { display: none; }
+.subject > summary::after {
+	content: '▼';
+	font-size: 0.85em; color: #64748b; transform: rotate(-90deg); transition: transform .2s ease;
+}
+.subject[open] > summary::after { transform: rotate(0deg); }
+.subject .summary-text { color: #64748b; font-weight: 600; }
+
+/* 펼침 영역 안 입력 레이아웃 정리 */
+.subject .grade-inputs {
+	margin: 6px 12px 14px;
+}
+.subject .input-group {
+	grid-template-columns: 90px 1fr 100px 1fr;
+}
+
+/* 모바일: 2열 */
+@media (max-width: 768px) {
+	.subject .input-group { grid-template-columns: 90px 1fr; }
+}
+
+/* 모션 민감 사용자: 애니메이션/트랜지션 최소화 */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* 반응형 보완 */
+@media (max-width: 768px) {
+    .container { padding: 24px; }
+    h1 { font-size: 1.7em; }
+    h2 { font-size: 1.35em; }
+
+    /* 모바일에서도 Grid 유지: 2열(라벨-입력) */
+    .grade-inputs .input-group { grid-template-columns: 90px 1fr; }
+    .chart-container { width: 95%; }
+	.actions { gap: 10px; }
+	.chart-controls { grid-template-columns: 1fr; justify-items: stretch; }
+}
+
+/* 소단원 타이틀(섹션 h2/legend)을 둥근 배지형으로 */
+.input-section h2,
+.semester-section h2 {
+	/* 기존 border-bottom 제거 및 라운드 배지 적용 */
+	border-bottom: none !important;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 14px;
+	margin-bottom: 14px;
+	background: linear-gradient(180deg, #eef2ff, #ffffff);
+	border: 1px solid #c7d2fe;
+	color: #0f172a;
+	border-radius: var(--radius-pill);
+	box-shadow: 0 4px 12px rgba(30, 64, 175, 0.06);
+	font-family: 'Jua', 'Nunito', 'Segoe UI Rounded', 'NanumSquareRound', 'Noto Sans KR', system-ui, sans-serif;
+	font-weight: 700;
+	letter-spacing: .2px;
+}
+.fieldset > legend {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 12px;
+	background: linear-gradient(180deg, #fff7ed, #ffffff);
+	border: 1px solid #fed7aa;
+	border-radius: var(--radius-pill);
+	color: #7c2d12;
+	font-family: 'Jua', 'Nunito', 'Segoe UI Rounded', 'NanumSquareRound', 'Noto Sans KR', system-ui, sans-serif;
+	font-weight: 700;
+}
+
+/* 입력 라벨을 더 굵고 선명하게 */
+.input-group label {
+	font-family: 'Nunito', 'Segoe UI Rounded', 'Noto Sans KR', system-ui, sans-serif;
+	font-weight: 800;
+	color: #0f172a;
+	letter-spacing: .2px;
+}
+
+/* 점수 입력 강조(굵고 직관적) */
+.score-input {
+	font-weight: 800;
+	font-size: 1.06em;
+	background: linear-gradient(180deg, #f2f7ff 0%, #ffffff 100%);
+	border: 2px solid #93c5fd;
+	color: #0b1324;
+	padding: 12px 14px;
+	border-radius: var(--radius-md);
+	box-shadow: 0 1px 0 rgba(37,99,235,0.14) inset;
+}
+.score-input:focus {
+	border-color: #2563eb;
+	box-shadow: 0 0 0 4px rgba(37,99,235,0.18);
+}
+
+/* 등수 입력도 굵게 */
+input[id$="Rank1"],
+input[id$="Rank2"] {
+	font-weight: 700;
+	border: 2px solid #d1d5db;
+	padding: 12px 14px;
+	border-radius: var(--radius-md);
+}
+input[id$="Rank1"]:focus,
+input[id$="Rank2"]:focus {
+	border-color: #a78bfa;
+	box-shadow: 0 0 0 4px rgba(167,139,250,0.18);
+}
+
+/* 라벨 아이콘(점수/등수) */
+label[for$="Score1"]::before,
+label[for$="Score2"]::before { content: '📝'; margin-right: 6px; }
+label[for$="Rank1"]::before,
+label[for$="Rank2"]::before { content: '🏁'; margin-right: 6px; }
+
+/* 과목 아코디언 summary 배지 톤 보강 */
+.subject > summary {
+	border-radius: var(--radius-lg);
+	background: linear-gradient(180deg, #ffffff, #f8fafc);
+}
+.subject .summary-text {
+	background: #eef2ff;
+	color: #1e3a8a;
+	border: 1px solid #c7d2fe;
+	padding: 4px 10px;
+	border-radius: var(--radius-pill);
+	font-weight: 800;
+}
+
+/* 아코디언 내부 카드 둥글림 유지/강화 */
+.grade-inputs.blue-accent,
+.grade-inputs .input-group {
+	border-radius: var(--radius-lg);
+}
+
+/* 학교/인원 입력 필드도 살짝 강조 */
+#schoolName,
+#totalStudents {
+	font-weight: 700;
+	border: 2px solid #e5e7eb;
+	padding: 12px 14px;
+	border-radius: var(--radius-md);
+}
+#schoolName:focus,
+#totalStudents:focus {
+	border-color: #60a5fa;
+	box-shadow: 0 0 0 4px rgba(96,165,250,0.18);
+}
+
+/* 결과 카드 타이틀 대비 보강 */
+.result-section h3 {
+	display: inline-block;
+	padding: 6px 12px;
+	background: #eff6ff;
+	border: 1px solid #bfdbfe;
+	border-radius: var(--radius-pill);
+	color: #0c4a6e;
+	font-family: 'Nunito', 'Segoe UI Rounded', 'Noto Sans KR', system-ui, sans-serif;
+	font-weight: 800;
+}
+
+/* 차트 카드 모서리/그림자 보강 */
+.chart-container {
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow);
+}
+
+/* 모바일 액션바 버튼 라운드 강화 */
+.mobile-actions button { border-radius: var(--radius-pill); }
+
+/* 액션 버튼 간격 보강 */
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* 가져오기 파일 입력 숨김(보조) */
+#importInput { display: none; }
+
+/* 인쇄 최적화: 결과만 출력 */
+@media print {
+	/* 레이아웃/배경 정리 */
+	body { background: #fff; padding: 0; }
+	.container { border: none; box-shadow: none; margin: 0; padding: 0; }
+	.container::before { display: none; }
+	/* 입력/액션/푸터 비표시 */
+	.left-pane,
+	.actions,
+	.mobile-actions,
+	.topbar,
+	.site-footer { display: none !important; }
+	/* 결과만 단일 컬럼로 */
+	.layout-grid { display: block; }
+	.right-pane { position: static; }
+	.chart-container { box-shadow: none; border: 1px solid #ddd; }
+	/* 링크 밑줄 제거 */
+	a::after { content: ''; }
+}
+
+/* 상단바/브랜드 */
+.topbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-logo { font-size: 1.4em; }
+.badge {
+	background: linear-gradient(180deg, #e0f2fe, #ffffff);
+	border: 1px solid #bae6fd;
+	color: #075985;
+	padding: 2px 10px;
+	border-radius: var(--radius-pill);
+	font-weight: 800;
+	font-size: 0.8em;
+}
+
+/* 상단 브랜드 텍스트를 둥근·진한 폰트로 */
+.brand-text {
+	font-family: 'Jua','Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+	font-weight: 800;
+	letter-spacing: .2px;
+	color: #0f172a;
+}
+
+/* 페이지 타이틀은 이미 둥글·진한 폰트 적용됨(page-title) */
+
+/* 제목: 둥근(Jua)·진한 폰트 유지/강화 */
+.page-title {
+	font-family: 'Jua','Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+	font-weight: 900;
+	letter-spacing: .2px;
+}
+
+/* 결과 보기 버튼을 학교/인원 섹션과 같은 폰트/디자인으로 */
+#calculateBtn {
+	font-family: 'Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+	font-weight: 900;
+	color: #0f172a;
+	background: linear-gradient(180deg, #eef2ff, #ffffff);
+	border: 1.5px solid #c7d2fe;
+	box-shadow: 0 8px 18px rgba(99,102,241,0.15);
+	text-shadow: none;
+}
+#calculateBtn:hover {
+	filter: none; /* 기본 버튼 hover 밝기 효과 제거 */
+	transform: translateY(-1px);
+	background: linear-gradient(180deg, #ffffff, #eef2ff);
+	border-color: #818cf8;
+	box-shadow: 0 10px 20px rgba(99,102,241,0.18);
+}
+#calculateBtn:focus-visible {
+	outline: 3px solid rgba(99,102,241,0.35);
+	outline-offset: 2px;
+}
+#calculateBtn:active { transform: translateY(0); }
+
+/* 계산 결과: 학교/인원 섹션과 동일 폰트/톤 */
+.result-section,
+.result-section p,
+.result-item,
+.grade-result-item,
+.percentage-estimate,
+.summary-box,
+.ai-advice-box {
+	font-family: 'Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+	color: #0f172a;
+}
+
+/* 결과 그리드: 데스크톱 2열로 가독성 향상 */
+.result-grid {
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+	gap: 20px;
+}
+@media (min-width: 1024px) {
+	.result-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+}
+
+/* 결과 섹션 h3에 맥락 아이콘 배지 추가 */
+.result-section h3.overall-percentage-title::before { content: '🎯'; margin-right: 6px; }
+.result-section h3.chart-title::before { content: '📊'; margin-right: 6px; }
+.result-section h3.average-title::before { content: '🧾'; margin-right: 6px; }
+.result-section h3.ai-advice-title::before { content: '🤖'; margin-right: 6px; }
+
+/* 학교 정보 배지 강화 */
+.school-info {
+	font-family: 'Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+	font-weight: 800;
+	color: #0f172a;
+	background: linear-gradient(180deg, #f8fafc, #ffffff);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-pill);
+	display: inline-block;
+	padding: 6px 12px;
+	margin: 6px 0 10px;
+}
+
+/* 버튼 포커스 가시성 */
+button:focus-visible,
+.btn-secondary:focus-visible {
+	outline: 3px solid rgba(37,99,235,0.35);
+	outline-offset: 2px;
+}
+
+/* 필드셋을 카드형으로 */
+.fieldset {
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	background: #ffffff;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+	padding: 10px 12px 14px;
+}
+
+/* 차트 카드 보더/배경 미세 보강 */
+.chart-container {
+	border: 1px solid #e5e7eb;
+	background: linear-gradient(180deg, #ffffff, #fbfdff);
+}
+
+/* AI 조언 스켈레톤 로딩 */
+@keyframes shimmer {
+	0% { transform: translateX(-100%); }
+	100% { transform: translateX(100%); }
+}
+.skeleton {
+	position: relative;
+	overflow: hidden;
+}
+.skeleton::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(229,231,235,0.7) 50%, rgba(255,255,255,0) 100%);
+	transform: translateX(-100%);
+	animation: shimmer 1.2s infinite;
+}
+
+/* 입력 hover/focus 미세 인터랙션 */
+.input-group input:hover,
+.input-group select:hover {
+	border-color: #94a3b8;
+}
+
+/* 모바일 탭 타겟 강화 */
+button, .btn-secondary, .mobile-actions button,
+.input-group input, .input-group select {
+	min-height: 44px;
+}
+
+/* 인트로 히어로 */
+.intro-hero {
+	background: linear-gradient(180deg, #ffffff, #f8fafc);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-xl);
+	box-shadow: var(--shadow);
+	padding: 22px 20px;
+	margin-bottom: 18px;
+	text-align: center;
+}
+.page-title {
+	margin: 0 0 8px 0;
+	font-size: 2.0em;
+	font-weight: 900;
+	font-family: 'Jua','Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+	color: #0f172a;
+	letter-spacing: .2px;
+}
+.page-subtitle {
+	margin: 0;
+	color: #334155;
+	font-size: 1.02em;
+	line-height: 1.6;
+	font-family: 'Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+	font-weight: 700;
+}
+
+/* 결과 섹션 h2도 배지형으로 통일 */
+.result-section h2 {
+	border-bottom: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 14px;
+	margin: 0 0 12px 0;
+	background: linear-gradient(180deg, #eef2ff, #ffffff);
+	border: 1px solid #c7d2fe;
+	color: #0f172a;
+	border-radius: var(--radius-pill);
+	box-shadow: 0 4px 12px rgba(30,64,175,0.06);
+	font-family: 'Jua','Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+	font-weight: 700;
+}
+
+/* AI 채팅 위젯 */
+.ai-chat {
+	margin-top: 14px;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	background: #ffffff;
+	box-shadow: var(--shadow);
+	padding: 14px;
+	text-align: left;
+}
+.chat-title {
+	display: inline-block;
+	margin: 0 0 8px 0;
+	padding: 6px 12px;
+	background: #fff1f2;
+	border: 1px solid #fecdd3;
+	color: #9f1239;
+	border-radius: var(--radius-pill);
+	font-family: 'Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+	font-weight: 800;
+}
+.chat-messages {
+	display: grid;
+	gap: 8px;
+	max-height: 260px;
+	overflow: auto;
+	padding: 6px 2px;
+}
+.chat-msg {
+	display: inline-block;
+	max-width: 90%;
+	padding: 10px 12px;
+	border-radius: 14px;
+	border: 1px solid var(--border);
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+}
+.chat-msg.user {
+	justify-self: end;
+	background: #eef2ff;
+	border-color: #c7d2fe;
+}
+.chat-msg.bot {
+	justify-self: start;
+	background: #f0fdf4;
+	border-color: #bbf7d0;
+}
+.chat-input {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 8px;
+	margin-top: 8px;
+}
+#chatInput {
+	border: 2px solid #e5e7eb;
+	border-radius: var(--radius-pill);
+	padding: 12px 14px;
+	font-weight: 700;
+}
+#chatInput:focus {
+	border-color: #60a5fa;
+	box-shadow: 0 0 0 4px rgba(96,165,250,0.18);
+}
+.chat-note {
+	margin: 8px 0 0 0;
+	font-size: .9em;
+	color: #64748b;
+}
+
+/* 제목/소개: 둥근·진한 폰트 유지 강화 */
+.page-title {
+	font-weight: 900;
+	letter-spacing: .2px;
+}
+.page-subtitle {
+	font-family: 'Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+	font-weight: 700;
+}
+
+/* 계산 결과 전반 폰트를 둥글고 진하게 */
+.result-section,
+.result-item,
+.grade-result-item,
+.percentage-estimate,
+.summary-box,
+.ai-advice-box {
+	font-family: 'Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+}
+.grade-result-item strong { font-weight: 900; }
+.result-item { font-weight: 700; }
+
+/* AI 설정 패널 */
+.ai-settings {
+	margin-top: 8px;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	background: #ffffff;
+	box-shadow: var(--shadow);
+}
+.ai-settings > summary {
+	cursor: pointer;
+	padding: 10px 12px;
+	font-weight: 800;
+	font-family: 'Nunito','Segoe UI Rounded','Noto Sans KR',system-ui,sans-serif;
+}
+.ai-settings-body {
+	display: grid;
+	gap: 10px;
+	padding: 10px 12px 14px;
+	text-align: left;
+}
+.ai-settings .input-row {
+	display: grid;
+	grid-template-columns: 120px 1fr;
+	gap: 10px;
+	align-items: center;
+}
+.ai-settings .input-row label { font-weight: 800; }
+.ai-settings .input-row input,
+.ai-settings .input-row select {
+	border: 2px solid #e5e7eb;
+	border-radius: var(--radius-md);
+	padding: 10px 12px;
+	font-weight: 700;
+}
+.ai-settings .input-row input:focus,
+.ai-settings .input-row select:focus {
+	border-color: #60a5fa;
+	box-shadow: 0 0 0 4px rgba(96,165,250,0.18);
+}
+.ai-settings-help { color: #64748b; }
